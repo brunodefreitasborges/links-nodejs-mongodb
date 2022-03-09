@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirection</title>
+</head>
+<body>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        h1 {
+            margin: 0;
+            background-color: rgb(212, 212, 212);
+            padding: 1em;
+            text-align: center;
+        }
+
+        form {
+            margin-top: 1em;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+        }
+
+        form input {
+            margin-left: 0.5em;
+            margin-right: 0.5em;
+            font-size: 1em;
+        }
+
+    </style>
+    
+    <h1>Editando Link</h1>
+
+    <form action="/edit/<%=body.id%>" method="POST">
+        <input class="field" name="title" placeholder="Title" required value="<%=body.title%>">
+        <input class="field" name="description" placeholder="Description" value="<%=body.description%>">
+        <input class="field" name="url" placeholder="URL" required value="<%=body.url%>">
+        <button>Salvar</button>
+    </form>
+</body>
+</html>

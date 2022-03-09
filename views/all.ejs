@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links</title>
+</head>
+
+<body>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        h1 {
+            margin: 0;
+            background-color: rgb(212, 212, 212);
+            padding: 1em;
+            text-align: center;
+        }
+
+        .addlink {
+            margin-top: 1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .addlink a {
+            padding: 0.3em;
+            text-decoration: none;
+            color: black;
+            border: 1px solid black;
+            font-size: 22px;
+        }
+
+        .link {
+            margin-left: 2em;
+            padding: 1em;
+            display: flex;
+        }
+
+        .link a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .link a:hover {
+            color: blue;
+        }
+
+        .link button a {
+            text-decoration: none;
+            color: black;
+            cursor: default;
+        }
+
+    </style>
+
+    <h1>Repositório de Links</h1>
+
+    <div class="addlink"><a href="/add">Adicionar Novo Link</a></div>
+
+    <% for(let i=0; i < links.length; i++) { %>
+        <div class="link" id="<%=links[i]._id%>">
+            <form method="POST" action="/<%=links[i]._id%>?_method=DELETE">
+                <h2>
+                    <a href="localhost:3000/<%=links[i].title%>" target="_blank">/<%=links[i].title%></a>
+                </h2>
+                <p>
+                    <%=links[i].description%>
+                </p>
+                <p>
+                    <%=links[i].url%>
+                </p>
+                <p>Clicks: <%=links[i].click%> </p>
+                <button type="submit">Delete</button>
+                <button><a href="/edit/<%=links[i]._id%>">Edit</a></button>
+            </form>
+        </div>
+        <% } %>
+
+            <!-- <script>
+
+    function deleteLink(id) {
+
+        fetch('/' + id, {method: 'DELETE'}).then(res => {
+            res.text().then(linkId => {
+                document.getElementById(linkId).remove();
+                console.log(linkId);
+            })
+        })
+    }
+
+</script> -->
+
+</body>
+
+</html>
